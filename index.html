@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Mundo Gamer - Estilo Cyberpunk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0e27;
+            color: #00f3ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Estrellas de fondo */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 60px 70px, #fff, transparent),
+                radial-gradient(1px 1px at 50px 50px, #ddd, transparent),
+                radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+                radial-gradient(2px 2px at 90px 10px, #eee, transparent);
+            background-size: 200px 200px;
+            animation: stars 3s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes stars {
+            from { background-position: 0 0; }
+            to { background-position: 0 200px; }
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(0,20,40,0.9) 0%, rgba(10,14,39,0.95) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid #00f3ff;
+            box-shadow: 0 0 30px rgba(0,243,255,0.5);
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: #00f3ff;
+            text-shadow: 
+                0 0 10px #00f3ff,
+                0 0 20px #00f3ff,
+                0 0 30px #00f3ff,
+                0 0 40px #0080ff;
+            margin-bottom: 0.5rem;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+            letter-spacing: 5px;
+        }
+
+        @keyframes neonGlow {
+            from {
+                text-shadow: 
+                    0 0 10px #00f3ff,
+                    0 0 20px #00f3ff,
+                    0 0 30px #00f3ff,
+                    0 0 40px #0080ff;
+            }
+            to {
+                text-shadow: 
+                    0 0 20px #00f3ff,
+                    0 0 30px #00f3ff,
+                    0 0 40px #00f3ff,
+                    0 0 50px #0080ff,
+                    0 0 60px #0080ff;
+            }
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #ff00ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            background: rgba(0,20,40,0.8);
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00f3ff;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            background: transparent;
+            color: #00f3ff;
+            text-decoration: none;
+            border: 2px solid #00f3ff;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background: #00f3ff;
+            color: #0a0e27;
+            box-shadow: 0 0 20px #00f3ff;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, rgba(0,20,60,0.8) 0%, rgba(20,0,40,0.8) 100%);
+            border: 2px solid #00f3ff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 
+                0 0 20px rgba(0,243,255,0.3),
+                inset 0 0 20px rgba(0,243,255,0.1);
+            position: relative;
+        }
+
+        .intro::before {
+            content: '🎮';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            background: #0a0e27;
+            padding: 0 20px;
+        }
+
+        .intro h2 {
+            color: #00f3ff;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #00f3ff;
+        }
+
+        .intro p {
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: #ff00ff;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        .like-btn {
+            background: linear-gradient(135deg, rgba(0,243,255,0.2), rgba(255,0,255,0.2));
+            border: 2px solid #00f3ff;
+            color: #00f3ff;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 20px rgba(0,243,255,0.3);
+        }
+
+        .like-btn:hover {
+            background: linear-gradient(135deg, rgba(0,243,255,0.4), rgba(255,0,255,0.4));
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 
+                0 0 30px rgba(0,243,255,0.6),
+                0 0 50px rgba(255,0,255,0.4);
+            border-color: #ff00ff;
+            color: #ff00ff;
+        }
+
+        .like-btn:active {
+            transform: scale(0.95);
+        }
+
+        .like-btn.liked {
+            background: linear-gradient(135deg, rgba(255,0,255,0.4), rgba(0,243,255,0.4));
+            border-color: #ff00ff;
+            color: #ff00ff;
+        }
+
+        #like-icon {
+            font-size: 1.5rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .like-btn:hover #like-icon {
+            transform: scale(1.3) rotate(10deg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+            font-size: 2.5rem;
+            color: #00f3ff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px #00f3ff;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, rgba(0,20,60,0.6) 0%, rgba(20,0,40,0.6) 100%);
+            border: 2px solid #00f3ff;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(0,243,255,0.2);
+            position: relative;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00f3ff, #ff00ff, #00f3ff);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+
+        .game-card:hover::before {
+            opacity: 1;
+            animation: borderGlow 1.5s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 0 30px rgba(0,243,255,0.5),
+                0 0 50px rgba(255,0,255,0.3);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-bottom: 2px solid #00f3ff;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: all 0.4s ease;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .game-card:hover .game-image img {
+            transform: scale(1.1);
+            filter: brightness(1) contrast(1.3);
+        }
+
+        .game-content {
+            padding: 1.5rem;
+        }
+
+        .game-content h3 {
+            color: #00f3ff;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px #00f3ff;
+        }
+
+        .game-content p {
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .game-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: transparent;
+            color: #ff00ff;
+            text-decoration: none;
+            border: 2px solid #ff00ff;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .game-btn:hover {
+            background: #ff00ff;
+            color: #0a0e27;
+            box-shadow: 0 0 20px #ff00ff;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: linear-gradient(180deg, rgba(10,14,39,0.95) 0%, rgba(0,20,40,0.9) 100%);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 3px solid #00f3ff;
+            box-shadow: 0 -5px 30px rgba(0,243,255,0.3);
+        }
+
+        footer p {
+            color: #00f3ff;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Efecto de escaneo */
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        .scan-line {
+            position: fixed;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+
+    <header>
+        <h1>MI MUNDO GAMER</h1>
+        <p>// Explora los mejores videojuegos del momento //</p>
+    </header>
+
+    <nav>
+        <a href="#inicio" class="btn">🏠 Inicio</a>
+        <a href="#juegos" class="btn">🎯 Juegos</a>
+        <a href="https://store.steampowered.com/" target="_blank" class="btn">🛒 Steam</a>
+    </nav>
+
+    <div class="container">
+        <section id="inicio" class="intro">
+            <h2>[ Bienvenido a Mi Mundo Gamer ]</h2>
+            <p>Hola, soy <span class="highlight"></span>, un apasionado gamer que vive y respira videojuegos. En este espacio digital comparto mi pasión por el gaming, desde las épicas aventuras de mundos fantásticos hasta los intensos shooters multijugador y los frenéticos battle royales.</p>
+            <p>Cada juego que encontrarás aquí ha sido cuidadosamente seleccionado porque representa lo mejor del entretenimiento interactivo. Son títulos que me han hecho vibrar, reír, pensar y sentir emociones únicas.</p>
+            <p>Explora mi colección personal, descubre por qué estos juegos son especiales y únete a esta increíble comunidad gamer. <span class="highlight">¡Que comience la aventura épica!</span> 🚀🎮</p>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button class="like-btn" onclick="darLike()">
+                    <span id="like-icon">👍</span> <span id="like-text">Me Gusta</span> 
+                    <span id="like-count">(0)</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="juegos">
+            <h2 class="section-title">[ MIS JUEGOS FAVORITOS ]</h2>
+            
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="silksong.jpg" alt="Silksong">
+                    </div>
+                    <div class="game-content">
+                        <h3>Hollow Knight: Silksong</h3>
+                        <p>La esperada secuela del aclamado Hollow Knight. Juega como Hornet en una nueva aventura llena de misterio y desafíos en un reino desconocido.</p>
+                        <a href="https://www.hollowknightsilksong.com/" target="_blank" class="game-btn">Más Info</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="minecraft.jpg" alt="Minecraft">
+                    </div>
+                    <div class="game-content">
+                        <h3>Minecraft</h3>
+                        <p>El juego sandbox más popular del mundo. Construye, explora y sobrevive en un mundo infinito de bloques donde tu imaginación es el límite.</p>
+                        <a href="https://www.minecraft.net/" target="_blank" class="game-btn">Más Info</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="comd.jpg" alt="Call of Duty">
+                    </div>
+                    <div class="game-content">
+                        <h3>Call of Duty</h3>
+                        <p>La franquicia de shooters más icónica. Combates intensos, gráficos impresionantes y acción trepidante en cada partida multijugador.</p>
+                        <a href="https://www.callofduty.com/" target="_blank" class="game-btn">Más Info</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="hollow.jpg" alt="Hollow Knight">
+                    </div>
+                    <div class="game-content">
+                        <h3>Hollow Knight</h3>
+                        <p>Un metroidvania oscuro y atmosférico. Explora Hallownest, un vasto reino subterráneo lleno de criaturas extrañas y secretos antiguos.</p>
+                        <a href="https://www.hollowknight.com/" target="_blank" class="game-btn">Más Info</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="fort.jpg" alt="Fortnite">
+                    </div>
+                    <div class="game-content">
+                        <h3>Fortnite</h3>
+                        <p>El battle royale que revolucionó el género. 100 jugadores, construcción única y actualizaciones constantes con eventos épicos y colaboraciones.</p>
+                        <a href="https://www.fortnite.com/" target="_blank" class="game-btn">Más Info</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="warzone.jpg" alt="Warzone">
+                    </div>
+                    <div class="game-content">
+                        <h3>Call of Duty: Warzone</h3>
+                        <p>Battle royale gratuito con acción de COD. Despliega en Verdansk con tu escuadrón y sé el último en pie en intensos combates.</p>
+                        <a href="https://www.callofduty.com/warzone" target="_blank" class="game-btn">Más Info</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-image">
+                        <img src="fall.jpg" alt="Fall Guys">
+                    </div>
+                    <div class="game-content">
+                        <h3>Fall Guys</h3>
+                        <p>Caos multijugador lleno de diversión. Compite con 60 jugadores en disparatados obstáculos hasta coronarte como el último Fall Guy en pie.</p>
+                        <a href="https://www.fallguys.com/" target="_blank" class="game-btn">Más Info</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>🎮 Mi Mundo Gamer © 2025 🎮</p>
+        <p>// Creado con pasión por los videojuegos //</p>
+    </footer>
+
+    <script>
+        // SISTEMA DE LIKES CON COOKIES - FUNCIONA EN SERVIDORES WEB
+        
+        // Función para establecer una cookie
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
+            console.log('🍪 Cookie guardada:', name, '=', value);
+        }
+
+        // Función para obtener una cookie
+        function getCookie(name) {
+            const nameEQ = name + '=';
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) {
+                    return c.substring(nameEQ.length, c.length);
+                }
+            }
+            return null;
+        }
+
+        // Función para dar o quitar like
+        function darLike() {
+            // Obtener valores actuales de las cookies
+            let likes = parseInt(getCookie('mundo-gamer-likes') || '0');
+            let hasLiked = getCookie('mundo-gamer-user-liked') === 'true';
+
+            console.log('📊 Estado ANTES - Likes:', likes, 'HasLiked:', hasLiked);
+
+            // Cambiar el estado
+            if (!hasLiked) {
+                likes++;
+                hasLiked = true;
+                console.log('💖 LIKE DADO!');
+            } else {
+                likes--;
+                hasLiked = false;
+                console.log('👎 LIKE QUITADO!');
+            }
+
+            // Guardar en cookies (expiran en 365 días)
+            setCookie('mundo-gamer-likes', likes.toString(), 365);
+            setCookie('mundo-gamer-user-liked', hasLiked.toString(), 365);
+
+            console.log('💾 GUARDADO - Likes:', likes, 'HasLiked:', hasLiked);
+
+            // Actualizar la interfaz
+            actualizarInterfaz(likes, hasLiked);
+
+            // VERIFICACIÓN EXTRA
+            setTimeout(() => {
+                const verificarLikes = getCookie('mundo-gamer-likes');
+                const verificarUser = getCookie('mundo-gamer-user-liked');
+                console.log('✅ VERIFICACIÓN cookies:', verificarLikes, verificarUser);
+            }, 100);
+        }
+
+        // Función para actualizar la interfaz visual
+        function actualizarInterfaz(likes, hasLiked) {
+            const btn = document.querySelector('.like-btn');
+            const icon = document.getElementById('like-icon');
+            const text = document.getElementById('like-text');
+            const count = document.getElementById('like-count');
+
+            if (hasLiked) {
+                icon.textContent = '💖';
+                text.textContent = '¡Te Encanta!';
+                btn.classList.add('liked');
+            } else {
+                icon.textContent = '👍';
+                text.textContent = 'Me Gusta';
+                btn.classList.remove('liked');
+            }
+
+            count.textContent = `(${likes})`;
+            console.log('🖥️ Interfaz actualizada mostrando:', likes, 'likes');
+        }
+
+        // Cargar datos cuando la página carga
+        window.addEventListener('DOMContentLoaded', function() {
+            // Leer de las cookies
+            const likes = parseInt(getCookie('mundo-gamer-likes') || '0');
+            const hasLiked = getCookie('mundo-gamer-user-liked') === 'true';
+
+            console.log('🚀 PÁGINA CARGADA - Likes guardados:', likes, 'User liked:', hasLiked);
+            console.log('🍪 Todas las cookies:', document.cookie);
+
+            // Mostrar los valores guardados
+            actualizarInterfaz(likes, hasLiked);
+        });
+
+        // TEST: Mostrar todas las cookies cada 3 segundos
+        setInterval(() => {
+            console.log('🔍 Cookies actuales:', {
+                likes: getCookie('mundo-gamer-likes'),
+                userLiked: getCookie('mundo-gamer-user-liked'),
+                all: document.cookie
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
